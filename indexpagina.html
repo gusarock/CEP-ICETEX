@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="icono.ico" type="image/x-icon">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .banner {
+            position: relative;
+            height: 100vh; /* Establece la altura del banner al 100% de la ventana */
+        }
+
+        .boton-simulador {
+            padding: 15px 25px;
+            background-color: #2966a3; /* Azul oscuro */
+            color: #ffffff; /* Texto blanco */
+            border-radius: 50px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-size: 22px;
+            position: absolute;
+            font-family: 'Century Gothic';
+            top: 100px; /* Ajusta la posición vertical */
+            left: 80%;
+            transform: translateX(-50%); /* Centra horizontalmente */
+            display: inline-block;
+            z-index: 1000; /* Asegura que el botón esté por encima de otros elementos */
+        }
+
+        .banner-images {
+            position: relative;
+            width: 100%;
+            height: 100%; /* Establece la altura de las imágenes al 100% de la ventana */
+        }
+
+        .banner-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .banner-image.active {
+            opacity: 1;
+        }
+    </style>
+    <title>Página principal ICETEX</title>
+</head>
+<body>
+    <div class="banner">
+        <div class="banner-images">
+            <div class="banner-image active" style="background-image: url('Banner1.png');"></div>
+            <div class="banner-image" style="background-image: url('Banner2.png');"></div>
+            <div class="banner-image" style="background-image: url('Banner3.png');"></div>
+            <div class="banner-image" style="background-image: url('Banner4.png');"></div>
+            <div class="banner-image" style="background-image: url('Banner5.png');"></div>
+            <div class="banner-image" style="background-image: url('Banner6.png');"></div>
+        </div>
+        <a href="simuladorweb.html" class="boton-simulador">Simulador de crédito express posgrago</a>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll(".banner-image");
+
+        function showImage(index) {
+            images.forEach((image, i) => {
+                if (i === index) {
+                    image.classList.add("active");
+                } else {
+                    image.classList.remove("active");
+                }
+            });
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+
+        setInterval(nextImage, 6000); // Cambia de imagen cada 6 segundos
+    </script>
+</body>
+</html>
